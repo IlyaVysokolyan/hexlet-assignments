@@ -3,9 +3,7 @@ package exercise.controller.users;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import exercise.model.Post;
@@ -25,9 +23,11 @@ public class PostsController {
 
     @PostMapping("/users/{id}/posts")
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@PathVariable("id") int id,
+    public Post create(@PathVariable("id") int id,
                        @RequestBody Post post) {
         post.setUserId(id);
+
+        return post;
     }
 }
 
