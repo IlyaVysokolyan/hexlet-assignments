@@ -1,5 +1,6 @@
 package exercise.controller.users;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,11 +33,9 @@ public class PostsController {
 
     @PostMapping("/users/{id}/posts")
     @ResponseStatus(HttpStatus.CREATED)
-    public Post create(@PathVariable("id") int id,
+    public void create(@PathVariable("id") int id,
                        @RequestBody Post post) {
         post.setUserId(id);
-
-        return post;
     }
 }
 
