@@ -1,23 +1,28 @@
 package exercise.model;
 
-import jakarta.persistence.*;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
 // BEGIN
 
 @Entity
-@Table(name = "person")
+@Table(name = "Person")
 @Getter
 @Setter
 public class Person {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-private int id;
+    private int id;
     @Column
-private String firstName;
+    private String firstName;
     @Column
-private String lastName;
+    private String lastName;
 }
 // END
