@@ -1,6 +1,7 @@
 package exercise.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,9 +36,9 @@ public class ProductsController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody Product product) {
-        List<Product> list = productRepository.findAll().stream().toList();
+        List<Product> list = productRepository.findAll();
         for (Product pr : list) {
-            if (pr.getId() == product.getId())
+            if (product.getTitle().equals(pr.getTitle()) & product.getPrice() == pr.getPrice())
                 throw new ResourceAlreadyExistsException("ResourceAlreadyExistsException");
         }
         productRepository.save(product);
