@@ -13,7 +13,7 @@ public class WelcomeController {
 
     @GetMapping("/welcome")
     public String welcome() {
-        return (daytime.getName()).equals("Day") ? "It is day now! Welcome to Spring!" : "It is night now! Welcome to Spring!";
+        return (daytime.getName()).equals("day") ? "It is day now! Welcome to Spring!" : "It is night now! Welcome to Spring!";
     }
 
 }
