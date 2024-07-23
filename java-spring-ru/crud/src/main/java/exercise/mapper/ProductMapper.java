@@ -1,6 +1,7 @@
 package exercise.mapper;
 
 import exercise.dto.*;
+import exercise.exception.BadRequestException;
 import exercise.exception.ResourceNotFoundException;
 import exercise.model.Category;
 import exercise.model.Product;

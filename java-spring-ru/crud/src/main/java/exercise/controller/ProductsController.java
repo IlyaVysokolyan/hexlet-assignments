@@ -55,13 +55,14 @@ public class ProductsController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ProductDTO create(@Valid @RequestBody ProductCreateDTO dto) {
-        categoryRepository.findById(dto.getCategoryId()).orElseThrow(()->new BadRequestException("BadRequestException"));
+        categoryRepository.findById(dto.getCategoryId()).orElseThrow(()->new BadRequestException(""));
         var entity = productMapper.map(dto);
         productRepository.save(entity);
         return productMapper.map(entity);
     }
 
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public ProductDTO update(@PathVariable Long id, @Valid @RequestBody ProductUpdateDTO dto) {
         var productEntity = productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("ResourceNotFoundException"));
         productMapper.update(dto, productEntity);
