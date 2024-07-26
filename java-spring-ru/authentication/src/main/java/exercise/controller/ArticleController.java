@@ -43,7 +43,7 @@ public class ArticleController {
     // BEGIN
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    private ArticleDTO create(@RequestBody ArticleCreateDTO createDTO) {
+    private ArticleDTO create(@Valid @RequestBody ArticleCreateDTO createDTO) {
         var currentUser = userUtils.getCurrentUser();
         var author = userRepository.findByEmail(currentUser.getEmail()).orElseThrow(()->new ResourceNotFoundException(""));
         var articleEntity = articleMapper.map(createDTO);
